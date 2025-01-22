@@ -2,7 +2,10 @@ import { useContext, useMemo } from "react";
 import { PaginationContext } from ".";
 import { paginationPageButtons } from "../../consts/className";
 
-const PaginationPageButtons = () => {
+interface PaginationPageButtonsProps {
+  className?: string;
+}
+const PaginationPageButtons = ({ className }: PaginationPageButtonsProps) => {
   const { currentPage, setCurrentPage, visiblePageCount, totalPages } =
     useContext(PaginationContext);
 
@@ -18,16 +21,22 @@ const PaginationPageButtons = () => {
     );
   }, [visiblePageCount, totalPages, currentPageBase]);
 
+  const paginationCls = useMemo(() => {
+    return className
+      ? `${className} ${paginationPageButtons}`
+      : paginationPageButtons;
+  }, [className]);
+
   return (
     <>
-      <div className={paginationPageButtons}>
+      <div className={paginationCls}>
         <ul
-          className={`${paginationPageButtons} ul`}
+          className={`${paginationCls} ul`}
           style={{ display: "flex", justifyContent: "center", gap: "8px" }}
         >
           {pageList.map((item) => (
             <li
-              className={`${paginationPageButtons} li`}
+              className={`${paginationCls}-${item}`}
               key={item}
               onClick={() => setCurrentPage(item)}
               style={{

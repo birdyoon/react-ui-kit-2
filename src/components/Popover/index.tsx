@@ -1,7 +1,7 @@
-import { createContext, FC, PropsWithChildren, useState } from "react";
+import { createContext, FC, PropsWithChildren, useMemo, useState } from "react";
 import PopoverContent from "./PopoverContent";
 import PopoverTrigger from "./PopoverTrigger";
-import { PopoverBaseCls } from "../../consts/className";
+import { popoverBaseCls } from "../../consts/className";
 
 interface PopoverCompoundProps {
   Trigger: typeof PopoverTrigger;
@@ -10,7 +10,7 @@ interface PopoverCompoundProps {
 
 interface PopoverProps extends PropsWithChildren {
   className?: string;
-  position: string;
+  popoverPosition: string;
 }
 
 interface PopoverContextProps {
@@ -18,7 +18,7 @@ interface PopoverContextProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   triggerLocation: DOMRect;
   setTriggerLocation: React.Dispatch<React.SetStateAction<DOMRect>>;
-  position: string;
+  popoverPosition: string;
 }
 
 export const PopoverContext = createContext<PopoverContextProps>({
@@ -26,11 +26,11 @@ export const PopoverContext = createContext<PopoverContextProps>({
   setIsOpen: () => {},
   triggerLocation: new DOMRect(),
   setTriggerLocation: () => {},
-  position: "",
+  popoverPosition: "bottom-left",
 });
 
 const Popover: FC<PopoverProps> & PopoverCompoundProps = (props) => {
-  const { children, className: classNameProp } = props;
+  const { children, className: classNameProp, popoverPosition } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [triggerLocation, setTriggerLocation] = useState(new DOMRect());
   //   console.log("triggerLocation ", triggerLocation);
@@ -40,11 +40,15 @@ const Popover: FC<PopoverProps> & PopoverCompoundProps = (props) => {
     setIsOpen,
     triggerLocation,
     setTriggerLocation,
-    position: "",
+    popoverPosition,
   };
-  const popoverCls = classNameProp
-    ? `${classNameProp} ${PopoverBaseCls}`
-    : PopoverBaseCls;
+
+  const popoverCls = useMemo(() => {
+    return classNameProp
+      ? `${classNameProp} ${popoverBaseCls}`
+      : popoverBaseCls;
+  }, [classNameProp]);
+
   return (
     <PopoverContext.Provider value={contextValue}>
       <div className={popoverCls}>{children}</div>

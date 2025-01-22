@@ -1,4 +1,4 @@
-import { createContext, FC, PropsWithChildren, useState } from "react";
+import { createContext, FC, PropsWithChildren, useMemo, useState } from "react";
 import PaginationNavigator from "./PaginationNavigator";
 import PaginationPageButtons from "./PaginationPageButtons";
 import { paginationBaseCls } from "../../consts/className";
@@ -62,9 +62,12 @@ const Pagination: FC<PaginationProps> & PaginationCompoundProps = (props) => {
     visiblePageCount: 10,
   };
 
-  const paginationCls = classNameProp
-    ? `${classNameProp} ${paginationBaseCls}`
-    : paginationBaseCls;
+  const paginationCls = useMemo(() => {
+    return classNameProp
+      ? `${classNameProp} ${paginationBaseCls}`
+      : paginationBaseCls;
+  }, [classNameProp]);
+
   return (
     <>
       <PaginationContext.Provider value={contextValue}>

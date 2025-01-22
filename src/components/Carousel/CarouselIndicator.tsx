@@ -1,17 +1,31 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { CarouselContext } from ".";
 import { carouselIndicatorCls } from "../../consts/className";
 
-const CarouselIndicator = () => {
+interface CarouselIndicatorProps {
+  className?: string;
+}
+const CarouselIndicator = ({ className }: CarouselIndicatorProps) => {
   const { itemLength, carouselIndex, setCarouselIndex } =
     useContext(CarouselContext);
   const items = Array.from({ length: itemLength });
+
+  const carouselCls = useMemo(() => {
+    return className
+      ? `${className} ${carouselIndicatorCls}`
+      : carouselIndicatorCls;
+  }, [className]);
+
   return (
     <>
-      <div className={carouselIndicatorCls}>
-        <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
+      <div className={carouselCls}>
+        <div
+          className={`${carouselCls} indicator`}
+          style={{ display: "flex", justifyContent: "center", gap: "10px" }}
+        >
           {items.map((_, index) => (
             <div
+              className={`${carouselCls} ${index}`}
               key={index}
               onClick={() => setCarouselIndex(index)}
               style={{

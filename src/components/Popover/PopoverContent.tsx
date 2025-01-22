@@ -3,37 +3,80 @@ import {
   PropsWithChildren,
   useContext,
   useEffect,
-  useLayoutEffect,
+  useMemo,
   useRef,
+  useState,
 } from "react";
 import { PopoverContext } from ".";
-import { PopoverContentCls } from "../../consts/className";
+import { popoverContentCls } from "../../consts/className";
 import ReactDOM from "react-dom";
 
-interface PopoverContentProps extends PropsWithChildren {}
-/* trigger bottom-left, bottom-center, bottom-right좌표구해서 position에 조건줬을때 저 위치로 나타나게  */
-const PopoverContent: FC<PopoverContentProps> = ({ children }) => {
-  const { isOpen, triggerLocation, position } = useContext(PopoverContext);
+type Position = "bottom-left" | "bottom-center" | "bottom-right";
+
+interface PopoverContentProps extends PropsWithChildren {
+  className?: string;
+}
+const PopoverContent: FC<PopoverContentProps> = ({ children, className }) => {
+  const { isOpen, triggerLocation, popoverPosition } =
+    useContext(PopoverContext);
+  const [isOpenContent, setIsOpenContent] = useState(isOpen);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  //   useEffect(() => {
-  //     const contentDomRect = contentRef.current?.getBoundingClientRect();
-  //   }, [isOpen]);
+  const popoverCls = useMemo(() => {
+    return className ? `${className} ${popoverContentCls}` : popoverContentCls;
+  }, [className]);
 
-  console.log("triggerLocation ", triggerLocation);
+  useEffect(() => {
+    const handleClose = (e: MouseEvent) => {
+      if (
+        contentRef.current &&
+        !contentRef.current?.contains(e.target as Node)
+      ) {
+        setIsOpenContent(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClose);
 
-  if (position === "bottom-left") {
-  }
+    return () => document.removeEventListener("mousedown", handleClose);
+  }, []);
 
-  if (!isOpen) {
+  useEffect(() => {
+    setIsOpenContent(isOpen);
+  }, [isOpen]);
+
+  const top = useMemo(() => {
+    return triggerLocation.bottom;
+  }, [triggerLocation]);
+
+  const left = useMemo(() => {
+    return triggerLocation.x;
+  }, [triggerLocation]);
+
+  const right = useMemo(() => {
+    return triggerLocation.right;
+  }, [triggerLocation]);
+
+  const leftCenter = useMemo(() => {
+    return left + (right - left) / 2;
+  }, [left, right]);
+
+  if (!isOpenContent) {
     return null;
   }
+
+  const positons = {
+    "bottom-left": { left: `${left}px`, top: `${top}px` },
+    "bottom-center": { left: `${leftCenter}px`, top: `${top}px` },
+    "bottom-right": { left: `${right}px`, top: `${top}px` },
+  };
+
+  const style: React.CSSProperties = {
+    position: "absolute",
+    ...positons[popoverPosition as Position],
+  };
+
   return ReactDOM.createPortal(
-    <div
-      ref={contentRef}
-      className={PopoverContentCls}
-      //   style={{ position: "absolute" }}
-    >
+    <div ref={contentRef} className={popoverCls} style={style}>
       {children}
     </div>,
     document.body

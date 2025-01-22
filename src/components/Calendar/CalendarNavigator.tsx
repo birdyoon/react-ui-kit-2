@@ -1,23 +1,30 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { CalendarContext } from ".";
 import { calendarNavigatorCls } from "../../consts/className";
 
-const CalendarNavigator = () => {
+interface CalendarNavigatorProps {
+  className?: string;
+}
+
+const CalendarNavigator = ({ className }: CalendarNavigatorProps) => {
   const { date, setDate } = useContext(CalendarContext);
-  const monthDay = new Date(date);
 
   const prevMonth = () => {
-    monthDay.setMonth(date.getMonth() - 1);
-    setDate(monthDay);
-    console.log("이전 monthDay ", date);
+    const newDate = new Date(date.getFullYear(), date.getMonth() - 1, 1);
+    setDate(newDate);
   };
   const nextMonth = () => {
-    monthDay.setMonth(date.getMonth() + 1);
-    setDate(monthDay);
-    console.log("다음 monthDay ", date);
+    const newDate = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+    setDate(newDate);
   };
+
+  const calendarCls = useMemo(() => {
+    return className
+      ? `${className} ${calendarNavigatorCls}`
+      : calendarNavigatorCls;
+  }, [className]);
   return (
-    <div className={calendarNavigatorCls}>
+    <div className={calendarCls}>
       <button onClick={prevMonth}>{"<"}</button>
       <button onClick={nextMonth}>{">"}</button>
     </div>

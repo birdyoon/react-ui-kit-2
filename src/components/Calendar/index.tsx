@@ -1,4 +1,11 @@
-import { createContext, FC, PropsWithChildren, useState } from "react";
+import {
+  createContext,
+  FC,
+  PropsWithChildren,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import CalendarCurrent from "./CalendarCurrent";
 import CalendarNavigator from "./CalendarNavigator";
 import CalendarBody from "./CalendarBody";
@@ -11,8 +18,9 @@ interface CalendarCompoundProps {
 }
 
 interface CalendarProps extends PropsWithChildren {
-  onChange?: () => void;
-  dafaultValue?: Date;
+  onChange?: (date: Date) => void;
+  // dafaultValue?: Date;
+  value?: Date;
   className?: string;
 }
 
@@ -29,11 +37,21 @@ export const CalendarContext = createContext<CalendarContextProps>({
 });
 
 const Calendar: FC<CalendarProps> & CalendarCompoundProps = (props) => {
-  const { children, dafaultValue, className: classNameProp } = props;
-  const [date, setDate] = useState<Date>(dafaultValue || new Date());
+  const { children, value, onChange, className: classNameProp } = props;
+  const [date, setDate] = useState<Date>(value || new Date());
 
-  const handleChangeDate = () => {
-    // 네비버튼 클릭했을때, body 날짜 바뀔때 돌아가게
+  useEffect(() => {
+    if (value) {
+      setDate(value);
+    }
+  }, [value]);
+
+  const handleChangeDate = (newDate: Date) => {
+    setDate(newDate);
+
+    if (onChange) {
+      onChange(newDate);
+    }
   };
 
   const contextValue = {
@@ -42,9 +60,11 @@ const Calendar: FC<CalendarProps> & CalendarCompoundProps = (props) => {
     setDate,
   };
 
-  const calendarCls = classNameProp
-    ? `${classNameProp} ${calendarBaseCls}`
-    : calendarBaseCls;
+  const calendarCls = useMemo(() => {
+    return classNameProp
+      ? `${classNameProp} ${calendarBaseCls}`
+      : calendarBaseCls;
+  }, [classNameProp]);
   return (
     <>
       <CalendarContext.Provider value={contextValue}>

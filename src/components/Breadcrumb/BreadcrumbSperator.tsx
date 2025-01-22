@@ -1,18 +1,32 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useMemo, useRef } from "react";
 import { BreadcrumbContext } from ".";
+import { breadcrumbSperatorBaseCls } from "../../consts/className";
 
-const BreadcrumbSperator = () => {
+interface BreadcrumbSperatorProps {
+  className?: string;
+}
+
+const BreadcrumbSperator = ({ className }: BreadcrumbSperatorProps) => {
   const { setSperatorWidth } = useContext(BreadcrumbContext);
   const speratorRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const speratorDomRect = speratorRef.current?.getBoundingClientRect();
-    // console.log("speratorDomRect ", speratorDomRect?.width);
     const width = speratorDomRect?.width ?? 0;
     setSperatorWidth((prev) => prev + width);
   }, [speratorRef]);
 
-  return <span ref={speratorRef}>{">"}</span>;
+  const breadcrumbCls = useMemo(() => {
+    return className
+      ? `${className} ${breadcrumbSperatorBaseCls}`
+      : breadcrumbSperatorBaseCls;
+  }, [className]);
+
+  return (
+    <span className={breadcrumbCls} ref={speratorRef}>
+      {">"}
+    </span>
+  );
 };
 
 export default BreadcrumbSperator;

@@ -1,8 +1,12 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { PaginationContext } from ".";
 import { paginationNavigatorCls } from "../../consts/className";
 
-const PaginationNavigator = () => {
+interface PaginationNavigatorProps {
+  className?: string;
+}
+
+const PaginationNavigator = ({ className }: PaginationNavigatorProps) => {
   const { handleChangePage, currentPage, totalPages } =
     useContext(PaginationContext);
 
@@ -18,18 +22,24 @@ const PaginationNavigator = () => {
       handleChangePage(nextPage);
     }
   };
+
+  const paginationCls = useMemo(() => {
+    return className
+      ? `${className} ${paginationNavigatorCls}`
+      : paginationNavigatorCls;
+  }, [className]);
   return (
     <>
-      <div className={paginationNavigatorCls}>
+      <div className={paginationCls}>
         <button
-          className={`${paginationNavigatorCls} button-prev`}
+          className={`${paginationCls} prev`}
           onClick={handleClickPrev}
           disabled={currentPage === 1}
         >
           {"<"}
         </button>
         <button
-          className={`${paginationNavigatorCls} button-next`}
+          className={`${paginationCls} next`}
           onClick={handleClickNext}
           disabled={currentPage === totalPages}
         >

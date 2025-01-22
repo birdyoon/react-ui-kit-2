@@ -26,6 +26,7 @@ export const calendarBodyCls = getBaseCls("calendar-body");
 // breadcrumb Component
 export const breadcrumbBaseCls = getBaseCls("breadcrumb");
 export const breadcrumbItemBaseCls = getBaseCls("breadcrumb-item");
+export const breadcrumbSperatorBaseCls = getBaseCls("breadcrumb-sperator");
 
 // pagination Component
 export const paginationBaseCls = getBaseCls("pagination");
@@ -33,6 +34,25 @@ export const paginationNavigatorCls = getBaseCls("pagination-navigator");
 export const paginationPageButtons = getBaseCls("pagination-button");
 
 // Popover Component
-export const PopoverBaseCls = getBaseCls("popover");
-export const PopoverContentCls = getBaseCls("popover-content");
-export const PopoverTriggerCls = getBaseCls("popover-trigger");
+export const popoverBaseCls = getBaseCls("popover");
+export const popoverContentCls = getBaseCls("popover-content");
+export const popoverTriggerCls = getBaseCls("popover-trigger");
+
+// Progress Component
+export const progressBaseCls = getBaseCls("progress");
+
+// Modal Component
+export const modalBaseCls = getBaseCls("modal");
+export const modalBackdropCls = getBaseCls("modal-backdrop");
+export const modalTriggerCls = getBaseCls("modal-trigger");
+export const modalCloseCls = getBaseCls("modal-close");
+export const modalContentCls = getBaseCls("modal-content");
+
+// datePicker Component
+export const datePickerBaseCls = getBaseCls("datepicker");
+
+// Select Component
+export const selectBaseCls = getBaseCls("select");
+export const selectTriggerCls = getBaseCls("select-trigger");
+export const selectContentCls = getBaseCls("select-content");
+export const selectItemCls = getBaseCls("select-item");

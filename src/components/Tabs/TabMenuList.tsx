@@ -1,8 +1,17 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useMemo } from "react";
 import { tabsMenuListBaseCls } from "../../consts/className";
 
-const TabMenuList = ({ children }: PropsWithChildren) => {
-  return <div className={tabsMenuListBaseCls}>{children}</div>;
+interface TabMenuListProps extends PropsWithChildren {
+  className?: string;
+}
+const TabMenuList = ({ children, className }: TabMenuListProps) => {
+  const tabsCls = useMemo(() => {
+    return className
+      ? `${className} ${tabsMenuListBaseCls}`
+      : tabsMenuListBaseCls;
+  }, [className]);
+
+  return <div className={tabsCls}>{children}</div>;
 };
 
 export default TabMenuList;

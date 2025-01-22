@@ -1,8 +1,11 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { CarouselContext } from ".";
 import { carouselNavigatorCls } from "../../consts/className";
 
-const CarouselNavigator = () => {
+interface CarouselNavigatorProps {
+  className?: string;
+}
+const CarouselNavigator = ({ className }: CarouselNavigatorProps) => {
   const {
     setCarouselIndex,
     carouselIndex,
@@ -20,19 +23,20 @@ const CarouselNavigator = () => {
     const newIndex = isLastSlide ? 0 : carouselIndex + 1;
     setCarouselIndex(newIndex);
   };
+
+  const carouselCls = useMemo(() => {
+    return className
+      ? `${className} ${carouselNavigatorCls}`
+      : carouselNavigatorCls;
+  }, [className]);
+
   return (
-    <div className={carouselNavigatorCls}>
-      <button
-        className={`${carouselNavigatorCls} button-prev`}
-        onClick={prevHandle}
-      >
+    <div className={carouselCls}>
+      <button className={`${carouselCls} button-prev`} onClick={prevHandle}>
         {" "}
         prev{" "}
       </button>
-      <button
-        className={`${carouselNavigatorCls} button-next`}
-        onClick={nextHandle}
-      >
+      <button className={`${carouselCls} button-next`} onClick={nextHandle}>
         {" "}
         next{" "}
       </button>

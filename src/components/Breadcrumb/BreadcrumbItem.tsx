@@ -1,26 +1,43 @@
-import { FC, PropsWithChildren, useContext, useEffect, useRef } from "react";
+import {
+  FC,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { breadcrumbItemBaseCls } from "../../consts/className";
 import { BreadcrumbContext } from ".";
 
 interface BreadcrumbItemProps extends PropsWithChildren {
+  className?: string;
   href: string;
 }
 
-const BreadcrumbItem: FC<BreadcrumbItemProps> = ({ children, href }) => {
+const BreadcrumbItem: FC<BreadcrumbItemProps> = ({
+  children,
+  href,
+  className,
+}) => {
   const { setItemWidth } = useContext(BreadcrumbContext);
   const ref = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const spanItemDomRect = ref.current?.getBoundingClientRect();
-    // console.log("spanItemDomRect ", spanItemDomRect?.width);
     const width = spanItemDomRect?.width ?? 0; // width가 null일 경우 0설정
 
     setItemWidth((prev) => prev + width);
   }, []);
 
+  const breadcrumbCls = useMemo(() => {
+    return className
+      ? `${className} ${breadcrumbItemBaseCls}`
+      : breadcrumbItemBaseCls;
+  }, [className]);
+
   return (
-    <a className={breadcrumbItemBaseCls} href={href} ref={ref}>
-      <span className={`${breadcrumbItemBaseCls} span`}>{children}</span>
+    <a className={breadcrumbCls} href={href} ref={ref}>
+      <span className={`${breadcrumbCls} span`}>{children}</span>
     </a>
   );
 };

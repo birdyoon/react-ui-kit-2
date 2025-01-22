@@ -1,4 +1,4 @@
-import { createContext, FC, PropsWithChildren, useState } from "react";
+import { createContext, FC, PropsWithChildren, useMemo, useState } from "react";
 import CarouselItem from "./CarouselItem";
 import CarouselitemList from "./CarouselItemList";
 import CarouselNavigator from "./Carouselnavigator";
@@ -40,9 +40,11 @@ const Carousel: FC<CarouselProps> & CarouselCompoundProps = (props) => {
     itemLength: itemLength || 0,
   };
 
-  const carouselCls = classNameProp
-    ? `${classNameProp} ${carouselBaseCls}`
-    : carouselBaseCls;
+  const carouselCls = useMemo(() => {
+    return classNameProp
+      ? `${classNameProp} ${carouselBaseCls}`
+      : carouselBaseCls;
+  }, [classNameProp]);
 
   return (
     <>

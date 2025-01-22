@@ -3,6 +3,7 @@ import React, {
   createContext,
   FC,
   PropsWithChildren,
+  useMemo,
   useState,
 } from "react";
 import BreadcrumbItem from "./BreadcrumbItem";
@@ -34,9 +35,6 @@ const Breadcrumb: FC<BreadcrumbProps> & BreadcrumbCompoundProps = (props) => {
   const [speratorWidth, setSperatorWidth] = useState(0);
   const items = Children.toArray(children);
 
-  // console.log("itemWidth ", itemWidth);
-  // console.log("speratorWidth ", speratorWidth);
-
   const containerWidth = parseInt(width);
   console.log("containerWidth ", containerWidth);
 
@@ -49,9 +47,11 @@ const Breadcrumb: FC<BreadcrumbProps> & BreadcrumbCompoundProps = (props) => {
   };
   const contextValue = { setItemWidth, setSperatorWidth };
 
-  const breadcrumbCls = classNameProp
-    ? `${classNameProp} ${breadcrumbBaseCls}`
-    : breadcrumbBaseCls;
+  const breadcrumbCls = useMemo(() => {
+    return classNameProp
+      ? `${classNameProp} ${breadcrumbBaseCls}`
+      : breadcrumbBaseCls;
+  }, [classNameProp]);
 
   if (itemSperatorWidth > containerWidth) {
     return (
