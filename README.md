@@ -15,7 +15,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Tabs
 
 ### Example
 
-```tsx
+```jsx
 <Tabs onChangeTab={handleChangeTab}>
   <Tabs.MenuList>
     <Tabs.Menu index={1}>Menu1</Tabs.Menu>
@@ -41,7 +41,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Breadcrumb
 
 ### Example
 
-```tsx
+```jsx
 <Breadcrumb width="200px">
   <Breadcrumb.Item href="/a">A</Breadcrumb.Item>
   <Breadcrumb.Item href="/a-a">A-A</Breadcrumb.Item>
@@ -67,7 +67,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Carousel
 
 ### Example
 
-```tsx
+```jsx
 <Carousel itemLength={3}>
   <Carousel.ItemList>
     <Carousel.Item index={0}>1</Carousel.Item>
@@ -94,7 +94,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Calendar
 
 ### Example
 
-```tsx
+```jsx
 <Calendar onChange={handleChangeDate} value={date}>
   <Calendar.Current />
   <Calendar.Navigator />
@@ -116,7 +116,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Pagination
 
 ### Example
 
-```tsx
+```jsx
 <Pagination
   itemLength={235}
   onPageChange={handleChangePage}
@@ -143,7 +143,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Popover
 
 ### Example
 
-```tsx
+```jsx
 <Popover popoverPosition="bottom-left">
   <Popover.Trigger>open</Popover.Trigger>
   <Popover.Content>Place content for the popover here.</Popover.Content>
@@ -162,7 +162,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Progress
 
 ### Example
 
-```tsx
+```jsx
 <Progress stop={stop} />
 ```
 
@@ -182,7 +182,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Modal
 
 ### Example
 
-```tsx
+```jsx
 <Modal
   onCloseModel={handleCloseModal}
   onOpenModal={handleOpenModal}
@@ -213,7 +213,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/DatePicker
 
 ### Example
 
-```tsx
+```jsx
 <DatePicker date={new Date()} onChangeDate={handleChangeDatePicker} />
 ```
 
@@ -232,7 +232,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Select
 
 ### Example
 
-```tsx
+```jsx
 <Select onChange={handleChangeValue} value={selectedValue}>
   <Select.Trigger />
   <Select.Content>
