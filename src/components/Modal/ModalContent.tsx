@@ -1,6 +1,6 @@
 import { PropsWithChildren, useContext, useMemo } from "react";
 import { ModalContext } from ".";
-import { modalContentCls } from "../../consts/className";
+import { modalContentCls } from "@consts/className";
 
 interface ModalContentProps extends PropsWithChildren {
   className?: string;

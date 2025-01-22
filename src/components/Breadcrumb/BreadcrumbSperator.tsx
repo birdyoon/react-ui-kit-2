@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useRef } from "react";
 import { BreadcrumbContext } from ".";
-import { breadcrumbSperatorBaseCls } from "../../consts/className";
+import { breadcrumbSperatorBaseCls } from "@consts/className";
 
 interface BreadcrumbSperatorProps {
   className?: string;

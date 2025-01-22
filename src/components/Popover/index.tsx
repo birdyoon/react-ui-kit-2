@@ -1,7 +1,7 @@
 import { createContext, FC, PropsWithChildren, useMemo, useState } from "react";
 import PopoverContent from "./PopoverContent";
 import PopoverTrigger from "./PopoverTrigger";
-import { popoverBaseCls } from "../../consts/className";
+import { popoverBaseCls } from "@consts/className";
 
 interface PopoverCompoundProps {
   Trigger: typeof PopoverTrigger;

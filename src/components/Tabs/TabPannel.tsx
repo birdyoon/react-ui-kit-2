@@ -1,6 +1,6 @@
 import { PropsWithChildren, useContext, useMemo } from "react";
 import { TabsContext } from ".";
-import { tabsPannelBaseCls } from "../../consts/className";
+import { tabsPannelBaseCls } from "@consts/className";
 
 interface TabPannelProps extends PropsWithChildren {
   className?: string;

@@ -3,7 +3,7 @@ import CarouselItem from "./CarouselItem";
 import CarouselitemList from "./CarouselItemList";
 import CarouselNavigator from "./Carouselnavigator";
 import CarouselIndicator from "./CarouselIndicator";
-import { carouselBaseCls } from "../../consts/className";
+import { carouselBaseCls } from "@consts/className";
 
 interface CarouselCompoundProps {
   ItemList: typeof CarouselitemList;

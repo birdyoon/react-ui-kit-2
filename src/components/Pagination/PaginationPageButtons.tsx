@@ -1,6 +1,6 @@
 import { useContext, useMemo } from "react";
 import { PaginationContext } from ".";
-import { paginationPageButtons } from "../../consts/className";
+import { paginationPageButtons } from "@consts/className";
 
 interface PaginationPageButtonsProps {
   className?: string;

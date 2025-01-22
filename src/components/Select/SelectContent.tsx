@@ -1,6 +1,6 @@
 import { PropsWithChildren, useMemo } from "react";
-import Popover from "../Popover";
-import { selectContentCls } from "../../consts/className";
+import { selectContentCls } from "@consts/className";
+import Popover from "@ui/Popover";
 
 interface SelectContentProps extends PropsWithChildren {
   className?: string;

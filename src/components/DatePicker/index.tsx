@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren, useMemo, useState } from "react";
-import Popover from "../Popover";
-import Calendar from "../Calendar";
 import { datePickerBaseCls } from "../../consts/className";
+import Popover from "@ui/Popover";
+import Calendar from "@ui/Calendar";
 
 interface DatePickerProps extends PropsWithChildren {
   className?: string;

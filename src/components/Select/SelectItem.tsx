@@ -1,6 +1,6 @@
 import { PropsWithChildren, useContext, useMemo } from "react";
 import { SelectContext, SelectedItemValue } from ".";
-import { selectItemCls } from "../../consts/className";
+import { selectItemCls } from "@consts/className";
 
 interface SelectItemProps extends PropsWithChildren {
   className?: string;

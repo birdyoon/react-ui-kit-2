@@ -7,8 +7,8 @@ import React, {
   useState,
 } from "react";
 import BreadcrumbItem from "./BreadcrumbItem";
-import { breadcrumbBaseCls } from "../../consts/className";
 import BreadcrumbSperator from "./BreadcrumbSperator";
+import { breadcrumbBaseCls } from "@consts/className";
 
 interface BreadcrumbCompoundProps {
   Item: typeof BreadcrumbItem;

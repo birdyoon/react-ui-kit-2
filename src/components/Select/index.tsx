@@ -9,8 +9,8 @@ import {
 import SelectContent from "./SelectContent";
 import SelectItem from "./SelectItem";
 import SelectTrigger from "./SelectTrigger";
-import { selectBaseCls } from "../../consts/className";
-import Popover from "../Popover";
+import { selectBaseCls } from "@consts/className";
+import Popover from "@ui/Popover";
 
 export type SelectedItemValue = {
   value: string;

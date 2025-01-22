@@ -6,8 +6,8 @@ import {
   useMemo,
   useRef,
 } from "react";
-import { breadcrumbItemBaseCls } from "../../consts/className";
 import { BreadcrumbContext } from ".";
+import { breadcrumbItemBaseCls } from "@consts/className";
 
 interface BreadcrumbItemProps extends PropsWithChildren {
   className?: string;

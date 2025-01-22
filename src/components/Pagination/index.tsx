@@ -1,7 +1,7 @@
 import { createContext, FC, PropsWithChildren, useMemo, useState } from "react";
 import PaginationNavigator from "./PaginationNavigator";
 import PaginationPageButtons from "./PaginationPageButtons";
-import { paginationBaseCls } from "../../consts/className";
+import { paginationBaseCls } from "@consts/className";
 
 interface PaginationCompoundProps {
   PageButtons: typeof PaginationPageButtons;

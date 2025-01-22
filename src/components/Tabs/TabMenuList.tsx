@@ -1,5 +1,5 @@
 import { PropsWithChildren, useMemo } from "react";
-import { tabsMenuListBaseCls } from "../../consts/className";
+import { tabsMenuListBaseCls } from "@consts/className";
 
 interface TabMenuListProps extends PropsWithChildren {
   className?: string;

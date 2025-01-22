@@ -1,6 +1,6 @@
 import { PropsWithChildren, useContext, useMemo } from "react";
 import { CarouselContext } from ".";
-import { carouselItemCls } from "../../consts/className";
+import { carouselItemCls } from "@consts/className";
 
 interface CarouselItemProps extends PropsWithChildren {
   className?: string;

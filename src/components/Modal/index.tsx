@@ -3,7 +3,7 @@ import ModalBackdrop from "./ModalBackdrop";
 import ModalContent from "./ModalContent";
 import ModalTrigger from "./ModalTrigger";
 import ModalClose from "./ModalClose";
-import { modalBaseCls } from "../../consts/className";
+import { modalBaseCls } from "@consts/className";
 
 interface ModalCompoundProps {
   Backdrop: typeof ModalBackdrop;

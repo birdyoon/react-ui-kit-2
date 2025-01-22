@@ -7,7 +7,7 @@ import {
   useMemo,
 } from "react";
 import { ModalContext } from ".";
-import { modalTriggerCls } from "../../consts/className";
+import { modalTriggerCls } from "@consts/className";
 
 interface ModalTriggerProps extends PropsWithChildren {
   className?: string;

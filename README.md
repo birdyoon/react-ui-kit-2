@@ -8,7 +8,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Tabs
 
 ### Children
 
-- Index
+- Root
 - TabMenu
 - TabMenuList
 - TabPannel
@@ -36,7 +36,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Breadcrumb
 
 ### Children
 
-- Index
+- Root
 - BreadcrumbItem
 
 ### Example
@@ -59,7 +59,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Carousel
 
 ### Children
 
-- Index
+- Root
 - CarouselItemList
 - CarouselItem
 - CarouselNavigator
@@ -87,7 +87,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Calendar
 
 ### Children
 
-- Index
+- Root
 - CalendarCurrent
 - CalendarNavigator
 - CalendarBody
@@ -110,7 +110,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Pagination
 
 ### Children
 
-- Index
+- Root
 - PaginationPageButtons
 - PaginationNavigator
 
@@ -137,7 +137,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Popover
 
 ### Children
 
-- Index
+- Root
 - PopoverTrigger
 - PopoverContent
 
@@ -158,7 +158,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Progress
 
 ### Children
 
-- Index
+- Root
 
 ### Example
 
@@ -174,7 +174,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Modal
 
 ### Children
 
-- Index
+- Root
 - ModalBackdrop
 - ModalTrigger
 - ModalContent
@@ -209,7 +209,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/DatePicker
 
 ### Children
 
-- Index
+- Root
 
 ### Example
 
@@ -225,7 +225,7 @@ https://github.com/birdyoon/react-ui-kit-2/tree/master/src/components/Select
 
 ### Children
 
-- Index
+- Root
 - SelectTrigger
 - SelectContent
 - SelectItem

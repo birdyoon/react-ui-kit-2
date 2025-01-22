@@ -2,7 +2,7 @@ import { createContext, FC, PropsWithChildren, useMemo, useState } from "react";
 import TabMenuList from "./TabMenuList";
 import TabMenu from "./TabMenu";
 import TabPannel from "./TabPannel";
-import { tabsBaseCls } from "../../consts/className";
+import { tabsBaseCls } from "@consts/className";
 
 interface TabCompoundProps {
   MenuList: typeof TabMenuList;

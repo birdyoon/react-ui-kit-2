@@ -9,7 +9,7 @@ import {
 import CalendarCurrent from "./CalendarCurrent";
 import CalendarNavigator from "./CalendarNavigator";
 import CalendarBody from "./CalendarBody";
-import { calendarBaseCls } from "../../consts/className";
+import { calendarBaseCls } from "@consts/className";
 
 interface CalendarCompoundProps {
   Current: typeof CalendarCurrent;

@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import { PopoverContext } from ".";
-import { popoverContentCls } from "../../consts/className";
+import { popoverContentCls } from "@consts/className";
 import ReactDOM from "react-dom";
 
 type Position = "bottom-left" | "bottom-center" | "bottom-right";
