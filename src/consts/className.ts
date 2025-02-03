@@ -56,3 +56,16 @@ export const selectBaseCls = getBaseCls("select");
 export const selectTriggerCls = getBaseCls("select-trigger");
 export const selectContentCls = getBaseCls("select-content");
 export const selectItemCls = getBaseCls("select-item");
+
+// Accordion Component
+export const accordionBaseCls = getBaseCls("accordion");
+export const accordionItemCls = getBaseCls("accordion-item");
+export const accordionTriggerCls = getBaseCls("accordion-trigger");
+export const accordionContentCls = getBaseCls("accordion-content");
+
+// Toast Component
+export const toastBaseCls = getBaseCls("toast");
+export const toastContentCls = getBaseCls("toast-content");
+export const toastDescriptionCls = getBaseCls("toast-description");
+export const toastTitleCls = getBaseCls("toast-title");
+export const toastCloseCls = getBaseCls("toast-close");

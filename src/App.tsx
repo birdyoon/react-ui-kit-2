@@ -1,4 +1,3 @@
-// import Calendar from "./components/Calendar";
 import {
   Carousel,
   Tabs,
@@ -10,8 +9,10 @@ import {
   Modal,
   DatePicker,
   Select,
+  Accordion,
 } from "./components";
 import { useEffect, useState } from "react";
+import { useToast } from "@ui/Toast/hooks/useToast";
 
 const sleep = async (time: number): Promise<void> =>
   await new Promise((resolve) => setTimeout(() => resolve(), time));
@@ -56,6 +57,17 @@ function App() {
   const handleChangeValue = (selectedValue: string) => {
     console.log(selectedValue);
   };
+
+  const toast = useToast();
+  const handleClickOpenToast = () => {
+    toast({
+      title: "ToastTitle",
+      description: "ToastDescription",
+      delay: 2000,
+      position: "top-right",
+    });
+  };
+
   return (
     <>
       <Progress stop={stop} />
@@ -118,12 +130,10 @@ function App() {
       >
         <Modal.Backdrop />
         <Modal.Trigger>
-          {/* * Trigger UI를 사용자 단에서 자유롭게 설정 가능하게. * */}
           <div>Custom-Trigger</div>
         </Modal.Trigger>
 
         <Modal.Content>
-          {/* * Close UI를 사용자 단에서 자유롭게 설정 가능하게. * */}
           <Modal.Close>
             <a>custom-modal-close</a>
           </Modal.Close>
@@ -134,16 +144,37 @@ function App() {
       <DatePicker date={new Date()} onChangeDate={handleChangeDatePicker} />
 
       <Select onChange={handleChangeValue} value={selectedValue}>
-        {/** 클릭 시 Option들을 보여주고, 선택된 option를 보여줌 **/}
         <Select.Trigger />
-
-        {/** 보여질 Option들을 나열 **/}
         <Select.Content>
           <Select.Item value={"1"}>One</Select.Item>
           <Select.Item value={"2"}>Two</Select.Item>
           <Select.Item value={"3"}>Three</Select.Item>
         </Select.Content>
       </Select>
+
+      <Accordion>
+        <Accordion.Item value="item-1">
+          <Accordion.Trigger>Is it accessible?</Accordion.Trigger>
+          <Accordion.Content>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </Accordion.Content>
+        </Accordion.Item>
+        <Accordion.Item value="item-2">
+          <Accordion.Trigger>Is it styled?</Accordion.Trigger>
+          <Accordion.Content>
+            Yes. It comes with default styles that matches the other
+            components&apos; aesthetic.
+          </Accordion.Content>
+        </Accordion.Item>
+        <Accordion.Item value="item-3">
+          <Accordion.Trigger>Is it animated?</Accordion.Trigger>
+          <Accordion.Content>
+            Yes. It's animated by default, but you can disable it if you prefer.
+          </Accordion.Content>
+        </Accordion.Item>
+      </Accordion>
+
+      <button onClick={handleClickOpenToast}>open toast</button>
     </>
   );
 }
